@@ -9,51 +9,58 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #111;
+    background-color: #000;
 }
 
 .container {
     position: relative;
-    width: 80%;
-    max-width: 1000px;
-    aspect-ratio: 16 / 9; /* Mantém a proporção do vídeo */
-    overflow: hidden;
+    width: 90%;
+    max-width: 800px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: crosshair;
 }
 
-.pizza-video {
+.pizza-bg {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz o vídeo preencher o container */
-    transition: filter 0.6s ease;
+    /* Nome do arquivo que você forneceu */
+    background-image: url('monaz-nazary-HRNrl6NfgGc-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
     z-index: 1;
-    /* Começa focado */
+    /* Começa focada */
     filter: blur(0);
+    transition: filter 0.5s ease;
 }
 
 .focus-text {
     position: relative;
     z-index: 2;
     color: white;
-    font-size: clamp(3rem, 10vw, 8rem);
+    font-size: 7rem;
     font-family: 'Arial Black', sans-serif;
-    text-transform: uppercase;
     /* Começa desfocado */
     filter: blur(15px);
-    transition: filter 0.6s ease;
+    transition: filter 0.5s ease;
+    user-select: none;
 }
 
-/* Lógica do Mouse */
+/* Lógica de interação */
 
-/* 1. Ao passar o mouse no container, o vídeo desfoca */
-.container:hover .pizza-video {
+/* Quando o mouse entra no container, o fundo desfoca */
+.container:hover .pizza-bg {
     filter: blur(10px);
 }
 
-/* 2. Ao passar o mouse no container, o texto ganha foco */
+/* Quando o mouse entra no container, o texto foca */
 .container:hover .focus-text {
     filter: blur(0);
 }
